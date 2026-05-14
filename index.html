@@ -104,8 +104,33 @@ p{
 var url = "https://raw.githubusercontent.com/piou-cpu/Furniture-Book/main/mydata.json";
 
 fetch(url)
-	.then(function(response){return response.json();})	
-	.then(function(json){buildPage(json);})
+	.then(function(response){return response.json();})
+	.then(function(json){
+		buildPage(json);
+		setTimeout(function() {
+			Bindery.makeBook({
+			content:'#content',
+			rules: [
+			Bindery.FullBleedPage({
+			selector:'#grid-container',
+			continue:'next'
+			}),
+			Bindery.FullBleedPage({
+			selector:'#grid-container2',
+			continue:'next'
+			}),
+			Bindery.PageBreak({
+			selector:'.type',
+			position:'before'
+			}),
+			Bindery.FullBleedPage({
+			selector: 'img',
+			continue: 'same'
+			}),
+			]
+		})
+		}, 500);
+	})
 
 
 var urlParams = new URLSearchParams(location.search);
@@ -180,32 +205,6 @@ function buildPage(data) {
 };
 }
 
-$(function() {
-      setTimeout(function() {
-        Bindery.makeBook({
-	content:'#content',
-	// options
-	rules: [
-	Bindery.FullBleedPage({
-	selector:'#grid-container',
-	continue:'next'
-	}),
-	Bindery.FullBleedPage({
-	selector:'#grid-container2',
-	continue:'next'
-	}),
-	Bindery.PageBreak({
-	selector:'.type',
-	position:'before'
-	}),
-	Bindery.FullBleedPage({
-  	selector: 'img',
- 	continue: 'same'
-	}),
-	]
-})          
-            }, 1000);
-});
 
 </script>
 </body>
