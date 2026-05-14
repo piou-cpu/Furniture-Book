@@ -52,7 +52,7 @@ p{
   gap: 1px 1px;
   grid-template-areas: ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . .";
   height: 100%;
-   }
+}
 #grid-container2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -78,7 +78,6 @@ p{
 .📖-page:nth-of-type(2){
 	background: #eeece5;
 	background-image: none;
-
 }
 </style>
 </head>
@@ -102,13 +101,13 @@ fetch(url)
 			Bindery.makeBook({
 			content:'#content',
 			rules: [
-			Bindery.FullBleedPage({
+			Bindery.PageBreak({
 			selector:'#grid-container',
-			continue:'next'
+			position:'after'
 			}),
-			Bindery.FullBleedPage({
+			Bindery.PageBreak({
 			selector:'#grid-container2',
-			continue:'next'
+			position:'before'
 			}),
 			Bindery.PageBreak({
 			selector:'.type',
