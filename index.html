@@ -51,7 +51,6 @@ p{
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 1px 1px;
   grid-template-areas: ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . .";
-  height: 100%;
 }
 #grid-container2 {
   display: grid;
@@ -59,7 +58,6 @@ p{
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 1px 1px;
   grid-template-areas: ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . .";
-  height: 100%;
 }
 .type2{
 	font-size: 55%;
@@ -101,10 +99,6 @@ fetch(url)
 			Bindery.makeBook({
 			content:'#content',
 			rules: [
-			Bindery.PageBreak({
-			selector:'#grid-container',
-			position:'after'
-			}),
 			Bindery.PageBreak({
 			selector:'#grid-container2',
 			position:'before'
@@ -150,13 +144,13 @@ function buildPage(data) {
 		var file = document.createElement("img");
 		var imgsrc = array[i].file;
 
-		container.appendChild(file);
 		container.appendChild(type);
 		container.appendChild(photographer);
 		container.appendChild(fate);
 		container.appendChild(location);
 		container.appendChild(br);
 		container.appendChild(title);
+		container.appendChild(file);
 
 		title.innerHTML = array[i].title;
 		type.innerHTML = array[i].type;
