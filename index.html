@@ -58,6 +58,7 @@ p{
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 1px 1px;
   grid-template-areas: ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . .";
+  height: 100%;
    }
 #grid-container2 {
   display: grid;
@@ -92,8 +93,6 @@ p{
 	<div id="grid-container">
 	</div>
 	<div id="containermain"></div>
-	<p class='type'>Credits to</p>
-	
 	<div id="grid-container2">
 	</div>
 </div>
@@ -171,7 +170,7 @@ function buildPage(data) {
 	// 		this.html = '<img src="images/' + imgsrc + ' " display="block">';
 	// });
 };
-	for(var i = 1; i < 75; i = i + 1){
+	for(var i = 1; i < array.length; i = i + 1){
 		var bcover = document.getElementById('grid-container2');
 		var photographer2 = document.createElement("p");
 	photographer2.setAttribute("class", "photographer2");
@@ -187,7 +186,15 @@ $(function() {
 	// options
 	rules: [
 	Bindery.PageBreak({
-	selector:'.type', 
+	selector:'#grid-container',
+	position:'after'
+	}),
+	Bindery.PageBreak({
+	selector:'#grid-container2',
+	position:'before'
+	}),
+	Bindery.PageBreak({
+	selector:'.type',
 	position:'before'
 	}),
 
