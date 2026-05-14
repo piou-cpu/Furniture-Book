@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>furniture</title>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src=bindery.min.js></script>
+	<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400&family=EB+Garamond:wght@400;600&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+body{
+	background-color: #f7f7f7;
+}
+.📖-page{
+	background-color: #eeece5;
+}
+.📖-page-background{
+	display: flex;
+  	justify-content: center;
+}
+#content{
+	/*background-image: url("images/noise.png");*/
+}
+img{
+	height:100%;
+}
+#blank{
+	visibility: hidden;
+}
+.title{
+	text-align: left;
+	font-family: 'EB Garamond', serif;
+	font-weight: 400;
+	font-size: 215%;
+}
+p{
+	font-family: 'Arimo', sans-serif;
+	font-weight: 400;
+	text-align: left;
+    margin-top: -2%;
+    font-size: 50%;
+}
+.type{
+	font-style: italic;
+}
+.type:last-of-type{
+	text-decoration: underline;
+	padding-bottom: 2%;
+}
+/*#grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". 
+}*/
+#grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . ." ". . .";
+   }
+#grid-container2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . .";
+}
+.type2{
+	font-size: 55%;
+	font-style: italic;
+}
+.type2:nth-child(7n + 1) { text-align: left; }
+.type2:nth-child(7n + 2) { text-align: left; }
+.type2:nth-child(7n + 3) { text-align: left; }
+.type2:nth-child(7n + 4) { text-align: right; }
+.type2:nth-child(7n + 5) { text-align: right; }
+.type2:nth-child(7n + 6) { text-align: right; }
+.type2:nth-child(7n + 7) { text-align: right; }
+.photographer2{
+	font-size: 52%;
+}
+.📖-page:nth-of-type(2){
+	background: #eeece5;
+	background-image: none;
+
+}
+</style>
+</head>
+<body>
+<div id=content>
+	<div id="grid-container">
+	</div>
+	<div id="containermain"></div>
+	<p class='type'>Credits to</p>
+	
+	<div id="grid-container2">
+	</div>
+</div>
+<!-- <div id=images> -->
+
+</div>
+<script>
+var url = "https://raw.githubusercontent.com/piou-cpu/Furniture-Book/main/mydata.json";
+
+fetch(url)
+	.then(function(response){return response.json();})	
+	.then(function(json){buildPage(json);})
+
+
+var urlParams = new URLSearchParams(location.search);
+
+urlParams.has('type');  // true
+urlParams.get('id');    // 1234
+urlParams.getAll('id'); // ["1234"]
+urlParams.toString();   // type=product&id=1234
+
+// console.log(urlParams.toString('month'))
+// console.log(urlParams.get('type'))
+// function buildPage(data) {
+// 	var array2 = data;
+
+// 	console.log(array2);
+	
+// }
+
+function buildPage(data) {
+	var array = data;
+	var container = document.createElement("div");
+	console.log(array);
+
+	for(var i = 0; i < 75; i = i + 1){
+		var cover = document.getElementById('grid-container');
+		var type2 = document.createElement("p");
+	type2.setAttribute("class", "type2");
+	cover.appendChild(type2);
+	type2.innerHTML = array[i].type;
+};
+
+	for(var i = 0; i < array.length; i = i + 1){
+		var content = document.getElementById('containermain');
+		var br = document.createElement("br");
+	container.setAttribute("class", "container");
+		content.appendChild(container)
+		var title = document.createElement("p");
+	title.setAttribute("class", "title");
+		var type = document.createElement("p");
+	type.setAttribute("class", "type");
+		var photographer = document.createElement("p");
+		var fate = document.createElement("p");
+		// loc.setAttribute("id", "loc");
+		var location = document.createElement("p");
+		var file = document.createElement("img");
+		var imgsrc = array[i].file;
+		
+		container.appendChild(file);
+		container.appendChild(type);
+		container.appendChild(photographer);
+		container.appendChild(fate);
+		container.appendChild(location);
+		container.appendChild(br);
+		container.appendChild(title);
+		
+		title.innerHTML = array[i].title;
+		type.innerHTML = array[i].type;
+		photographer.innerHTML = array[i].photographer;
+		fate.innerHTML = array[i].fate;
+		location.innerHTML = array[i].location;
+		file.src = "images/" + imgsrc + '.jpg';
+	// 	$(this).mouseover(function(){
+	// 		this.html = '<img src="images/' + imgsrc + ' " display="block">';
+	// });
+};
+	for(var i = 1; i < 75; i = i + 1){
+		var bcover = document.getElementById('grid-container2');
+		var photographer2 = document.createElement("p");
+	photographer2.setAttribute("class", "photographer2");
+	bcover.appendChild(photographer2);
+	photographer2.innerHTML = array[i].photographer;
+};
+}
+
+$(function() {
+      setTimeout(function() {
+        Bindery.makeBook({
+	content:'#content',
+	// options
+	rules: [
+	Bindery.PageBreak({
+	selector:'.type', 
+	position:'before'
+	}),
+
+	Bindery.FullBleedPage({
+  	selector: 'img',
+ 	continue: 'same'
+	}),
+	]
+})          
+            }, 1000);
+});
+
+</script>
+</body>
+</html>
+</html>
