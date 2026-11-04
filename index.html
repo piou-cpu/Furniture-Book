@@ -82,13 +82,14 @@ p{
 </style>
 </head>
 <body>
+<!-- Keep nothing, not even a line break, between the closing tags of #grid-container2 and #content:
+     the back cover overflows its page, so Bindery would push that whitespace onto a blank extra page. -->
 <div id=content>
 	<div id="grid-container" data-ignore-overflow="true">
 	</div>
 	<div id="containermain"></div>
 	<div id="grid-container2" data-ignore-overflow="true">
-	</div>
-</div>
+	</div></div>
 
 <script>
 var url = "https://raw.githubusercontent.com/piou-cpu/Furniture-Book/main/mydata.json";
